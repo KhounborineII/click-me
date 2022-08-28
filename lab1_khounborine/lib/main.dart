@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.orange,
       ),
-      home: const MyHomePage(title: 'The First App'),
+      home: const MyHomePage(title: 'This Is My App. This Is How It Works'),
     );
   }
 }
@@ -48,6 +48,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String box = '';
 
   void _incrementCounter() {
     setState(() {
@@ -63,6 +64,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void _resetCounter() {
     setState(() {
       _counter = 0;
+      box = '';
+    });
+  }
+
+  void _adHaha() {
+    setState(() {
+      box = '${box}haha';
     });
   }
 
@@ -87,13 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Icon(
             Icons.star,
-            color: Colors.red[500],
+            color: Colors.orange[500],
             size: 50,
           ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Text(box),
                 Image.asset('assets/HENDRIX.png'),
                 const Text(
                   'You have clicked the button this many times:',
@@ -104,13 +113,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                     onPressed: _resetCounter,
-                    child: const Text('Click to Reset Counter')),
+                    child: const Text('Click to Reset')),
+                OutlinedButton(
+                    onPressed: _adHaha, child: const Text('Click me :)')),
+                Text(box),
               ],
             ),
           ),
           Icon(
             Icons.star,
-            color: Colors.red[500],
+            color: Colors.orange[500],
             size: 50,
           ),
         ],
